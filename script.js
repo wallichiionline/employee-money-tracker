@@ -1,26 +1,167 @@
+// // Get a reference to the #add-employees-btn element
+// const addEmployeesBtn = document.querySelector('#add-employees-btn');
+
+// // Collect employee data
+// const collectEmployees = function() {
+//   function collectEmployees() {
+//     const employees = [];
+//     let addEmployee = true;
+  
+//     while (addEmployee) {
+//         const firstName = prompt("Enter employee's first name:");
+//         const lastName = prompt("Enter employee's last name:");
+//         let salary = prompt("Enter employee's salary:");
+  
+//         // Validate if salary is a number, default to 0 if not
+//         salary = isNaN(parseInt(salary)) ? 0 : parseInt(salary);
+  
+//         // Create an employee object and add it to the employees array
+//         employees.push({
+//             firstName: firstName,
+//             lastName: lastName,
+//             salary: salary
+//         });
+  
+//         const continueAdding = confirm("Do you want to add another employee?");
+//         addEmployee = continueAdding;
+//       }
+//     return employees;
+//   }
+  
+//   // Call the function to collect employee data
+//   const employeeArray = collectEmployees();
+//   console.log(employeeArray); // Output the array of employee objects
+//   // TODO: Get user input to create and return an array of employee objects
+//   function collectEmployees() {
+//     let employees = [];
+
+//     let addEmployee = true;
+//     while (addEmployee) {
+//         let firstName = prompt("Enter employee's first name:");
+//         let lastName = prompt("Enter employee's last name:");
+//         let salaryInput = prompt("Enter employee's salary:");
+//         let salary = isNaN(parseInt(salaryInput)) ? 0 : parseInt(salaryInput);
+
+//         employees.push({
+//             firstName: firstName,
+//             lastName: lastName,
+//             salary: salary
+//         });
+
+//         let continueInput = prompt("Do you want to add another employee? (yes/no)");
+//         addEmployee = continueInput.toLowerCase() === 'yes';
+//     }
+
+//     return employees;
+// }
+
+// // Example usage
+// let employeeArray = collectEmployees();
+// console.log(employeeArray);
+// }
+
+
+// // Display the average salary
+// const displayAverageSalary = function(employeesArray) {
+//   // TODO: Calculate and display the average salary
+//   function displayAverageSalary(employees) {
+//     let totalSalary = 0;
+
+//     employees.forEach(employee => {
+//         totalSalary += employee.salary;
+//     });
+
+//     const averageSalary = totalSalary / employees.length;
+
+//     console.log(`Average Salary: $${averageSalary.toFixed(2)} for ${employees.length} employees`);
+// }
+// }
+
+// // Select a random employee
+// const getRandomEmployee = function(employeesArray) {
+//   // TODO: Select and display a random employee
+//   function displayRandomEmployee(employees) {
+//     const randomIndex = Math.floor(Math.random() * employees.length);
+//     const randomEmployee = employees[randomIndex];
+
+//     console.log("Random Employee:");
+//     console.log(`Name: ${randomEmployee.firstName} ${randomEmployee.lastName}`);
+//     console.log(`Role: ${randomEmployee.role}`);
+//     console.log(`Salary: $${randomEmployee.salary}`);
+// }
+// }
+
+//REVISED
+
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
 // Collect employee data
-const collectEmployees = function() {
-  // TODO: Get user input to create and return an array of employee objects
+function collectEmployees() {
+  const employees = [];
+  let addEmployee = true;
+
+  while (addEmployee) {
+    const firstName = prompt("Enter employee's first name:");
+    const lastName = prompt("Enter employee's last name:");
+    let salary = prompt("Enter employee's salary:");
+
+    // Validate if salary is a number, default to 0 if not
+    salary = isNaN(parseInt(salary)) ? 0 : parseInt(salary);
+
+    // Create an employee object and add it to the employees array
+    employees.push({
+      firstName: firstName,
+      lastName: lastName,
+      salary: salary
+    });
+
+    const continueAdding = confirm("Do you want to add another employee?");
+    addEmployee = continueAdding;
+  }
+
+  return employees;
 }
 
 // Display the average salary
-const displayAverageSalary = function(employeesArray) {
-  // TODO: Calculate and display the average salary
+function displayAverageSalary(employees) {
+  let totalSalary = 0;
+
+  employees.forEach(employee => {
+    totalSalary += employee.salary;
+  });
+
+  const averageSalary = totalSalary / employees.length;
+
+  console.log(`Average Salary: $${averageSalary.toFixed(2)} for ${employees.length} employees`);
 }
 
 // Select a random employee
-const getRandomEmployee = function(employeesArray) {
-  // TODO: Select and display a random employee
+function getRandomEmployee(employees) {
+  const randomIndex = Math.floor(Math.random() * employees.length);
+  const randomEmployee = employees[randomIndex];
+
+  console.log("Random Employee:");
+  console.log(`Name: ${randomEmployee.firstName} ${randomEmployee.lastName}`);
+  console.log(`Salary: $${randomEmployee.salary}`);
 }
+
+// Example usage
+let employeeArray = collectEmployees();
+console.log(employeeArray);
+displayAverageSalary(employeeArray);
+getRandomEmployee(employeeArray);
+
+
+//REVISED
+
 
 /*
   ====================
   STARTER CODE
   Do not modify any of the code below this line:
 */
+
 
 // Display employee data in an HTML table
 const displayEmployees = function(employeesArray) {
